@@ -49,6 +49,10 @@ def _clear():
     global vehicle
     vehicle = Vehicle()
 
+@app.route('/health', methods=['GET'])
+def health_check():
+    return f'SERVICE RUNNING OK - Movements recorded: {len(vehicle.get_movements_data())}'
+
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(debug=True, host='0.0.0.0', port=port)
