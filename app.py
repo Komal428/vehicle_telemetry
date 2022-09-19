@@ -24,6 +24,14 @@ def record_movement():
         return "Received invalid movement data. Make sure the data contains 'speed', 'heading' and 'time' "
     return(data)
 
+app.route('/kpis', methods=['GET'])
+def get_estimat():
+    results = {
+        'average_speed':vehicle.average_speed,
+        'distance_driven':vehicle.distance_driven,
+        'distance_from_start':vehicle.distance_from_start
+    }
+    return results
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
